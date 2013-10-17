@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Geo GTFS API Docs | AVAIL </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style>
+      body {
+          padding-top: 50px;
+          padding-bottom: 20px;
+      }
+  </style>
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+  <a class="sr-only" href="#content">Skip navigation</a>
+  <!-- Docs master nav -->
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="http://availabs.org/" class="navbar-brand">AVAIL</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <a href="../components">APIs Home</a>
+        </li>
+        <li class="active">
+          <a href="../javascript">Geo GTFS API</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
+  <div class="container">
+    <h1>Geo GTFS API</h1>
+    <p>Easy access to hundreds of GTFS feeds extended with route and stop geography.</p>
+  </div>
+</div>
+
+<div class="container bs-docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="bs-sidebar hidden-print" role="complementary">
+        <ul class="nav bs-sidenav">
+          <li>
+            <a href="#docs-overview">Overview</a>
+            <ul class="nav">
+              <li><a href="#docs-introduction">Introduction</a></li>
+              <li><a href="#docs-data-sources">Data Sources</a></li>
+            </ul>
+          </li>
+          <li><a href="#getting-started">Getting Started</a>
+            <ul class="nav">
+              <li><a href="#in-the-browser">In the Browser</a></li>
+              <li><a href="#using-jquery">Using JQuery</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#agency">Agency</a>
+            <ul class="nav">
+              <li><a href="#agency-attributes">Attributes</a></li>
+              <li><a href="#agency-id">/:id</a></li>
+              <li><a href="#agency-find">/find</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#agency">Routes</a>
+            <ul class="nav">
+              <li><a href="#agency-attributes">Attributes</a></li>
+              <li><a href="#agency-id">/:id</a></li>
+              <li><a href="#agency-find">/find</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#agency">Stops</a>
+            <ul class="nav">
+              <li><a href="#agency-attributes">Attributes</a></li>
+              <li><a href="#agency-id">/:id</a></li>
+              <li><a href="#agency-find">/find</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <!-- Overview
+      ================================================== -->
+      <div class="bs-docs-section">
+        <div class="page-header">
+          <h1 id="docs-overview">Overview</h1>
+        </div>
+
+        <h3 id="docs-introduction">Introduction</h3>
+        <p> The General Transit Feed Specification (GTFS) defines a common format for public transportation schedules and associated geographic information. GTFS, first conceived by Bibiana McHugh, an IT Manager at the TriMet transit agency in the Portland metropolitan area (Oregon) was developed by Google and Portland TriMet, and originally known as the Google Transit Feed Specification.</p>
+        
+        <p>Since it was initially launched for Trimet in December of 2005 hundreds of transit agencies around the globe have adopted GTFS to encode their service information. According to gtfs-data-exchange.com there are 692 who openly publish their GTFS feeds to the public. The goal of this API is twofold:  
+          <ol>
+            <li>Make it easier for developers to acces this information for web applications.</li>
+            <li>Extend the data set to allow transit agencies a tool to easily analyze their networks.</li>
+          </ol>
+        </p>
+
+        <h3 id="docs-data-sources">Data Sources</h3>
+        <p> This API is based off the <a href="http://gtfs-data-exchange.com">gtfs-data-exchange.com</a> API, however instead of simply providing a link to download a zipped GTFS file, we allow you to directly access the information in these files as well as additionaly information that we have processed using these files.
+        </p>
+
+            <p>Currently we have pulled the subset of the data files from gtfs-data-exchange.com which are from official agency in the United States. This pares the possible list of 692 GTFS feeds down to 263. We are using a slightly modified (less strict) version of the <a href="https://code.google.com/p/gtfsdb/">gtfsdb-load tool</a> created by Mike Gilligan at trimet to process these zip files into the database serving our API. Using this tool we have so far been able to successfully process 127 of these 263 GTFS feeds. We are working on improving the number of feeds that are successfully processed into our database, however some feeds which do not meet certain strict guidlines outlined in the <a href="http://code.google.com/transit/spec/transit_feed_specification.html">GTFS Specification.</a>
+            </p>
+
+            <p>
+              Additionally we are only using the most recent GTFS datafile for each agency. We intend to add archived datasets in the future. 
+            </p>
+
+      </div>
+      <!-- Getting Started
+      ================================================== -->
+      <div class="bs-docs-section">
+        <div class="page-header">
+          <h1 id="getting-started">Getting Started<small> using the API</small></h1>
+        </div>
+        <h3 id="in-the-browser">In the Browser</h3>
+        <p> There is no sign up or authentication required to use the GeoGTFS API. To use it in the browser simply add the parameters you want to end of the api url (http://api.availabs.org/gtfs). For example this link will show a list of all agencies <code><a href="http://api.availabs.org/gtfs/agency" target="_blank">http://api.availabs.org/gtfs/agency/</a></code>.
+
+        </p>
+        <h3 id="using-jquery">Using JQuery Ajax</h3>
+        <p>
+          The api allows CORS (Cross Origin Resoruce Sharing) so a very simple Ajax request is all you need to recieve data.<br>
+          <br>
+          <code>
+<pre>
+$.ajax({
+  url:'http://api.availabs.org/gtfs/agency/',
+  dataType:'json'
+})
+.done(function(data){
+  console.log(data);
+  //do something with the data
+});
+</pre>
+          </code>
+
+        </p>
+      </div>
+      <div class="bs-docs-section">
+        <div class="page-header">
+          <h1 id="agency">Agency/<small> Choosing an Agency</small></h1>
+        </div>
+        <h3 id="agency-attributes">Attributes</h3>
+        <p></p>
+        <h3 id="in-the-browser">In the Browser</h3>
+        <p></p>
+        <h3 id="in-the-browser">In the Browser</h3>
+        <p></p>
+      </div>
+  </div><!-- end role="main"-->
+</div><!-- end class="container bs-docs-container" -->
+
+<!-- Footer
+================================================== -->
+<footer class="bs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-social">
+     
+    </div>
+    <p>Designed and built with all the love in the world by <a href="http://availabs.org" target="_blank">AVAIL</a>.</p>
+    <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.hexbin.v0.min.js?5c6e4f0"></script>
+<script src="http://d3js.org/d3.geo.tile.v0.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="js/vendor/jquery.gmap.js"></script>
+</body>
+</html>
