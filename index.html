@@ -110,22 +110,22 @@
         <h3 id="docs-introduction">Introduction</h3>
         <p> The General Transit Feed Specification (GTFS) defines a common format for public transportation schedules and associated geographic information. GTFS, first conceived by Bibiana McHugh, an IT Manager at the TriMet transit agency in the Portland metropolitan area (Oregon) was developed by Google and Portland TriMet, and originally known as the Google Transit Feed Specification.</p>
         
-        <p>Since it was initially launched for Trimet in December of 2005 hundreds of transit agencies around the globe have adopted GTFS to encode their service information. According to gtfs-data-exchange.com there are 692 who openly publish their GTFS feeds to the public. The goal of this API is twofold:  
+        <p>Since it was initially launched for TriMet in December of 2005, hundreds of transit agencies around the globe have adopted GTFS to encode their service information. According to gtfs-data-exchange.com there are 692 who openly publish their GTFS feeds. The goal of this API is twofold:  
           <ol>
-            <li>Make it easier for developers to acces this information for web applications.</li>
-            <li>Extend the data set to allow transit agencies a tool to easily analyze their networks.</li>
+            <li>Make it easier for developers to access this information for web applications.</li>
+            <li>Extend the data set to allow transit agencies to easily analyze their networks.</li>
           </ol>
         </p>
 
         <h3 id="docs-data-sources">Data Sources</h3>
-        <p> This API is based off the <a href="http://gtfs-data-exchange.com">gtfs-data-exchange.com</a> API, however instead of simply providing a link to download a zipped GTFS file, we allow you to directly access the information in these files as well as additionaly information that we have processed using these files.
+        <p> This API is based off the <a href="http://gtfs-data-exchange.com">gtfs-data-exchange.com</a> API, however instead of providing a link to download zipped GTFS files, we allow direct access to the information in these files, as well as additional information that we have processed using these files.
         </p>
 
-            <p>Currently we have pulled the subset of the data files from gtfs-data-exchange.com which are from official agency in the United States. This pares the possible list of 692 GTFS feeds down to 263. We are using a slightly modified (less strict) version of the <a href="https://code.google.com/p/gtfsdb/">gtfsdb-load tool</a> created by Mike Gilligan at trimet to process these zip files into the database serving our API. Using this tool we have so far been able to successfully process 127 of these 263 GTFS feeds. We are working on improving the number of feeds that are successfully processed into our database, however some feeds which do not meet certain strict guidlines outlined in the <a href="http://code.google.com/transit/spec/transit_feed_specification.html">GTFS Specification.</a>
+            <p>Currently we have pulled the subset of the data files from <a href="http://gtfs-data-exchange.com">gtfs-data-exchange.com</a> which are from official agencies within the United States. This pares the possible list of 692 GTFS feeds down to 263. We are using a slightly modified (less strict) version of the <a href="https://code.google.com/p/gtfsdb/">gtfsdb-load tool</a> created by Mike Gilligan at TriMet to process these zip files into the database serving our API. Using this tool we have so far been able to successfully process many of these 263 GTFS feeds. We are working on improving the number of feeds that are successfully processed into our database, however some feeds do not meet the guidelines outlined in the <a href="http://code.google.com/transit/spec/transit_feed_specification.html">GTFS Specification.</a>
             </p>
 
             <p>
-              Additionally we are only using the most recent GTFS datafile for each agency. We intend to add archived datasets in the future. 
+              Additionally we are only using the most recent GTFS data file for each agency. We intend to add archived data sets in the future. 
             </p>
 
       </div>
@@ -136,12 +136,12 @@
           <h1 id="getting-started">Getting Started<small> using the API</small></h1>
         </div>
         <h3 id="in-the-browser">In the Browser</h3>
-        <p> There is no sign up or authentication required to use the GeoGTFS API. To use it in the browser simply add the parameters you want to end of the api url (http://api.availabs.org/gtfs). For example this link will show a list of all agencies <code><a href="http://api.availabs.org/gtfs/agency" target="_blank">http://api.availabs.org/gtfs/agency/</a></code>.
+        <p> There is no sign up or authentication required to use the Geo GTFS API. To use it in the browser, add the parameters you want to end of the API url (http://api.availabs.org/gtfs). For example this link will show a list of all agencies <code><a href="http://api.availabs.org/gtfs/agency" target="_blank">http://api.availabs.org/gtfs/agency/</a></code>.
 
         </p>
         <h3 id="using-jquery">Using JQuery Ajax</h3>
         <p>
-          The api allows CORS (Cross Origin Resoruce Sharing) so a very simple Ajax request is all you need to recieve data.<br>
+          The API allows CORS (Cross Origin Resource Sharing) so a very simple Ajax request is all you need to receive data.<br>
           <br>
           <code>
 <pre>
